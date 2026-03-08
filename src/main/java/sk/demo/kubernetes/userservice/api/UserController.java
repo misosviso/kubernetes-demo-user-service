@@ -19,6 +19,11 @@ public class UserController {
         return service.create(user);
     }
 
+    @GetMapping("/default")
+    public UserEntity getDefault() {
+        return service.getDefault();
+    }
+
     @GetMapping("/{id}")
     public UserEntity get(@PathVariable UUID id) {
         System.out.println("Zdes");
