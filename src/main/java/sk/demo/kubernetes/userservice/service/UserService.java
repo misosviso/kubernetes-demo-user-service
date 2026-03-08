@@ -24,7 +24,7 @@ public class UserService {
     }
 
     public UserEntity get(UUID id) {
-        return repo.findById(DEFAULT_UUID).orElseThrow();
+        return repo.findById(id).orElseThrow();
     }
 
     public UserEntity getDefault() {
