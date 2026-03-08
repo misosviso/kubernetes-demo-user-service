@@ -37,19 +37,19 @@ jobs:
 
       - name: Build Docker image
         run: |
-          docker build -t user-service .
+          docker build -t user-service:${{ github.sha }} .
 
 
       - name: Tag Docker image
         run: |
-          docker tag user-service:latest \
-          ${{ secrets.ECR_REGISTRY }}/user-service:latest
+          docker tag user-service:${{ github.sha }} \
+          ${{ secrets.ECR_REGISTRY }}/user-service:${{ github.sha }}
 
 
       - name: Push Docker image to ECR
         run: |
           docker push \
-          ${{ secrets.ECR_REGISTRY }}/user-service:latest
+          ${{ secrets.ECR_REGISTRY }}/user-service:${{ github.sha }}
 
 
       - name: Update kubeconfig for EKS
