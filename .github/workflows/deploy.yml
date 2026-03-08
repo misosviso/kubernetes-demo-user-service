@@ -62,3 +62,6 @@ jobs:
       - name: Deploy to Kubernetes
         run: |
           kubectl apply -f k8s/
+          
+      - name: Restart user-service deployment
+        run: kubectl rollout restart deployment user-service
